@@ -4,7 +4,7 @@
     "test": "jest --coverage"
   },
   "jest": {
-    "preset":     "ts-jest"
+    "preset": "ts-jest"
   },
   "husky": {
     "hooks": {
