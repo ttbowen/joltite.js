@@ -1,8 +1,14 @@
 {
   "name": "joltite.js",
+  "version": "0.1.0",
   "scripts": {
+    "prepublish": "tsc",
+    "webpack:dev": "webpack --config webpack.dev.js",
+    "webpack:prod": "webpack --config webpack.prod.js",
     "test": "jest --coverage"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "jest": {
     "preset": "ts-jest"
   },
