@@ -1,4 +1,4 @@
 dist
 coverage
-.yarn
-.pnp.*
+node_modules
+**/*.js
