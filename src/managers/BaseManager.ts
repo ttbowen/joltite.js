@@ -1,6 +1,6 @@
 import { APIRequest } from '../APIRequest';
 import { GameJolt } from '../GameJolt';
-import { RequestOptions } from '../types/requestOptions';
+import { RequestOptions } from '../types/RequestOptions';
 import { Formats } from '../types/Formats';
 
 /**
