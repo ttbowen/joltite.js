@@ -1,10 +1,12 @@
-import fetch, { BodyInit, Response } from 'node-fetch';
+import * as nodeFetch from 'node-fetch';
 import { SHA1 } from 'crypto-js';
 
 import { RequestOptions } from './types/RequestOptions';
 import { GameJolt } from './GameJolt';
 import { HttpMethods } from './types/HttpMethods';
 import { Formats } from './types/Formats';
+
+const fetch = nodeFetch.default;
 
 /**
  * Represents an API request.
@@ -13,7 +15,7 @@ export class APIRequest {
   method: HttpMethods;
   path: string;
   client: GameJolt;
-  body?: BodyInit;
+  body?: nodeFetch.BodyInit;
   format: Formats;
 
   /**
@@ -32,7 +34,7 @@ export class APIRequest {
   /**
    * Sends a request to the API.
    */
-  make(): Promise<Response> {
+  make(): Promise<nodeFetch.Response> {
     let url = `${this.path}&game_id=${this.client.gameId}`;
 
     if (this.format !== Formats.Json) {
