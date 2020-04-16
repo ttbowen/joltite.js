@@ -7,5 +7,7 @@ module.exports = merge(common, {
   mode: 'production',
   output: {
     filename: `joltite-${version}.min.js`,
+    library: 'Joltite',
+    libraryTarget: 'umd',
   },
 });
