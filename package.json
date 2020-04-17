@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepublish": "tsc",
+    "prepublish": "tsc && yarn run webpack:prod",
     "webpack:dev": "webpack --config webpack.dev.js",
     "webpack:prod": "webpack --config webpack.prod.js",
     "test": "jest --coverage"
