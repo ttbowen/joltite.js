@@ -19,3 +19,8 @@ jobs:
       - run: npm i -g yarn@1
       - run: yarn
       - run: yarn test
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
