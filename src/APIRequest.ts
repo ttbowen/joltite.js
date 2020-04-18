@@ -1,11 +1,10 @@
-// import { SHA1 } from 'crypto-js';
-
-import SHA1 from './util/SHA1.js';
-
 import { RequestOptions } from './types/RequestOptions.js';
 import { GameJolt } from './GameJolt.js';
 import { HttpMethods } from './types/HttpMethods.js';
 import { Formats } from './types/Formats.js';
+import { BodyInit } from './types/BodyInit';
+
+import SHA1 from './util/SHA1.js';
 
 /**
  * Represents an API request.
@@ -14,13 +13,7 @@ export class APIRequest {
   method: HttpMethods;
   path: string;
   client: GameJolt;
-  body?:
-    | string
-    | ArrayBuffer
-    | ArrayBufferView
-    | NodeJS.ReadableStream
-    | URLSearchParams
-    | FormData;
+  body?: BodyInit;
   format: Formats;
 
   /**
@@ -53,10 +46,10 @@ export class APIRequest {
         ? window.fetch
         : (await import('node-fetch')).default;
 
-    return await fetch(`${url}&signature=${signature}`, {
+    return (await fetch(`${url}&signature=${signature}`, {
       method: this.method,
-      body: this.body,
-    });
+      body: this.body as string,
+    })) as Response;
   }
 
   private signature(url: string): Promise<string> {

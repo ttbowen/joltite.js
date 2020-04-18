@@ -1,17 +1,12 @@
 import { Formats } from './Formats.js';
 import { HttpMethods } from './HttpMethods.js';
+import { BodyInit } from './BodyInit';
 
 /**
  * API request options.
  */
 export interface RequestOptions {
   method?: HttpMethods;
-  body?:
-    | string
-    | ArrayBuffer
-    | ArrayBufferView
-    | NodeJS.ReadableStream
-    | URLSearchParams
-    | FormData;
+  body?: BodyInit;
   format?: Formats;
 }

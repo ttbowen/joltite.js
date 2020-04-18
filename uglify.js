@@ -1,10 +1,10 @@
-const path = require('path');
-const fs = require('fs');
-const UglifyJS = require('uglify-es');
+import path from 'path';
+import fs from 'fs';
+import UglifyJS from 'uglify-es';
 
-const { version } = require('./package.json');
+const { version } = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
-const rollupPath = path.join(__dirname, 'rollup');
+const rollupPath = path.resolve('rollup');
 
 const input = fs.readFileSync(
   path.join(rollupPath, `joltite-${version}.js`),
