@@ -1,8 +1,8 @@
-import path from 'path';
-import fs from 'fs';
-import UglifyJS from 'uglify-es';
+const path = require('path');
+const fs = require('fs');
+const UglifyJS = require('uglify-es');
 
-const { version } = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+const { version } = require('./package.json');
 
 const rollupPath = path.resolve('rollup');
 

@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "description": "A JavaScript library for interfacing with the Game Jolt game API.",
   "author": "Thomas Bowen",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/ttbowen/joltite.js"
   },
   "license": "MIT",
   "scripts": {
-    "watch": "tsc --watch",
+    "watch": "multiscript tsc --watch + rollup -c --watch --silent",
     "dist": "tsc && rollup -c && node uglify",
     "test": "jest --coverage"
   },
@@ -36,7 +35,6 @@
   "devDependencies": {
     "@types/jest": "^25.1.3",
     "@types/node": "^13.13.0",
-    "@types/node-fetch": "^2.5.6",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -46,6 +44,7 @@
     "jest": "^25.1.0",
     "jest-config": "^25.1.0",
     "lint-staged": "^10.0.8",
+    "multiscript": "^0.1.8",
     "prettier": "2.0.4",
     "rollup": "^2.6.1",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -56,6 +55,7 @@
     "uglify-es": "^3.3.9"
   },
   "dependencies": {
+    "@types/node-fetch": "^2.5.6",
     "node-fetch": "^2.6.0"
   }
 }

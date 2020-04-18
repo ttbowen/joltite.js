@@ -1,5 +1,5 @@
-import { UserTypes } from '../UserTypes.js';
-import { UserStatuses } from '../UserStatuses.js';
+import { UserTypes } from '../UserTypes';
+import { UserStatuses } from '../UserStatuses';
 
 /**
  * Represents a Game Jolt user.

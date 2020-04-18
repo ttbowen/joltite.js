@@ -1,5 +1,5 @@
 export default async (message: string): Promise<string> => {
-  if (typeof window !== 'undefined' && window.crypto.subtle) {
+  if (typeof window !== 'undefined' && typeof window.crypto !== 'undefined') {
     const encoder = new TextEncoder();
 
     const buffer = await crypto.subtle.digest('SHA-1', encoder.encode(message));
@@ -10,7 +10,7 @@ export default async (message: string): Promise<string> => {
 
     return hex;
   } else {
-    const crypto = (await import('crypto')).default;
+    const crypto = await import('crypto');
 
     const shasum = crypto.createHash('sha1');
 

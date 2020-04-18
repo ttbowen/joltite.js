@@ -1,5 +1,5 @@
-import { Response } from './Response.js';
-import { User } from '../models/User.js';
+import { Response } from './Response';
+import { User } from '../models/User';
 
 /**
  * Represents a user resource returned from the API.

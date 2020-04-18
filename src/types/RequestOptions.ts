@@ -1,5 +1,5 @@
-import { Formats } from './Formats.js';
-import { HttpMethods } from './HttpMethods.js';
+import { Formats } from './Formats';
+import { HttpMethods } from './HttpMethods';
 import { BodyInit } from './BodyInit';
 
 /**

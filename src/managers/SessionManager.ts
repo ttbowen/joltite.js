@@ -1,6 +1,6 @@
-import { Response } from '../types/responses/Response.js';
-import { BaseManager } from './BaseManager.js';
-import { Endpoints } from '../util/constants.js';
+import { Response } from '../types/responses/Response';
+import { BaseManager } from './BaseManager';
+import { Endpoints } from '../util/constants';
 
 /**
  * Manager responsible for managing the API methods of sessions.

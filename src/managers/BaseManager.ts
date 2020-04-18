@@ -1,7 +1,7 @@
-import { APIRequest } from '../APIRequest.js';
-import { GameJolt } from '../GameJolt.js';
-import { RequestOptions } from '../types/RequestOptions.js';
-import { Formats } from '../types/Formats.js';
+import { APIRequest } from '../APIRequest';
+import { GameJolt } from '../GameJolt';
+import { RequestOptions } from '../types/RequestOptions';
+import { Formats } from '../types/Formats';
 
 /**
  * Base manager responsible for managing

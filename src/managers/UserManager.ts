@@ -1,8 +1,8 @@
-import { Response } from '../types/responses/Response.js';
-import { Endpoints } from '../util/constants.js';
-import { BaseManager } from './BaseManager.js';
-import { AuthCredentials } from '../types/AuthCredentials.js';
-import { UserResponse } from '../types/responses/UserResponse.js';
+import { Response } from '../types/responses/Response';
+import { Endpoints } from '../util/constants';
+import { BaseManager } from './BaseManager';
+import { AuthCredentials } from '../types/AuthCredentials';
+import { UserResponse } from '../types/responses/UserResponse';
 
 /**
  * Manager responsible for managing the API methods of users.

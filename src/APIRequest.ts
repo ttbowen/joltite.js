@@ -1,10 +1,10 @@
-import { RequestOptions } from './types/RequestOptions.js';
-import { GameJolt } from './GameJolt.js';
-import { HttpMethods } from './types/HttpMethods.js';
-import { Formats } from './types/Formats.js';
+import { RequestOptions } from './types/RequestOptions';
+import { GameJolt } from './GameJolt';
+import { HttpMethods } from './types/HttpMethods';
+import { Formats } from './types/Formats';
 import { BodyInit } from './types/BodyInit';
 
-import SHA1 from './util/SHA1.js';
+import SHA1 from './util/SHA1';
 
 /**
  * Represents an API request.
@@ -42,7 +42,7 @@ export class APIRequest {
     const signature = await this.signature(url);
 
     const fetch =
-      typeof window !== 'undefined' && window.fetch
+      typeof window !== 'undefined' && typeof window.fetch !== 'undefined'
         ? window.fetch
         : (await import('node-fetch')).default;
 

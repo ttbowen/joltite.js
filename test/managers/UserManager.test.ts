@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
-import { GameJolt } from '../../src/GameJolt';
-import { AuthCredentials } from '../../src/types/AuthCredentials';
+import { GameJolt } from '../../dist/GameJolt';
+import { AuthCredentials } from '../../dist/types/AuthCredentials';
 
 jest.mock('node-fetch', () => jest.fn());
 
