@@ -1,5 +1,3 @@
-import { BodyInit } from 'node-fetch';
-
 import { Formats } from './Formats';
 import { HttpMethods } from './HttpMethods';
 
@@ -8,6 +6,12 @@ import { HttpMethods } from './HttpMethods';
  */
 export interface RequestOptions {
   method?: HttpMethods;
-  body?: BodyInit;
+  body?:
+    | string
+    | ArrayBuffer
+    | ArrayBufferView
+    | NodeJS.ReadableStream
+    | URLSearchParams
+    | FormData;
   format?: Formats;
 }

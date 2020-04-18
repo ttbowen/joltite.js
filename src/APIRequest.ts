@@ -1,12 +1,16 @@
-import * as nodeFetch from 'node-fetch';
-import { SHA1 } from 'crypto-js';
+// import { SHA1 } from 'crypto-js';
+
+import SHA1 from './util/SHA1';
 
 import { RequestOptions } from './types/RequestOptions';
 import { GameJolt } from './GameJolt';
 import { HttpMethods } from './types/HttpMethods';
 import { Formats } from './types/Formats';
 
-const fetch = nodeFetch.default;
+const fetch =
+  typeof module !== 'undefined' && module.exports
+    ? require('node-fetch')
+    : window.fetch;
 
 /**
  * Represents an API request.
@@ -15,7 +19,13 @@ export class APIRequest {
   method: HttpMethods;
   path: string;
   client: GameJolt;
-  body?: nodeFetch.BodyInit;
+  body?:
+    | string
+    | ArrayBuffer
+    | ArrayBufferView
+    | NodeJS.ReadableStream
+    | URLSearchParams
+    | FormData;
   format: Formats;
 
   /**
@@ -34,20 +44,22 @@ export class APIRequest {
   /**
    * Sends a request to the API.
    */
-  make(): Promise<nodeFetch.Response> {
+  async make(): Promise<Response> {
     let url = `${this.path}&game_id=${this.client.gameId}`;
 
     if (this.format !== Formats.Json) {
       url += `&format=${this.format}`;
     }
 
-    return fetch(`${url}&signature=${this.signature(url)}`, {
+    const signature = await this.signature(url);
+
+    return await fetch(`${url}&signature=${signature}`, {
       method: this.method,
       body: this.body,
     });
   }
 
-  private signature(url: string): string {
-    return SHA1(url + this.client.privateKey).toString();
+  private signature(url: string): Promise<string> {
+    return SHA1(url + this.client.privateKey);
   }
 }

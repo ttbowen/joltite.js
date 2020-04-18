@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { SHA1 } from 'crypto-js';
+import SHA1 from '../src/util/SHA1';
 
 import { GameJolt } from '../src/GameJolt';
 import { APIRequest } from '../src/APIRequest';
@@ -56,7 +56,7 @@ describe('APIRequest', () => {
       const endpoint = Endpoints.users.fetch([userId]);
       const apiRequest = new APIRequest(client, endpoint);
       const url = `${endpoint}&game_id=${client.gameId}`;
-      const signature = SHA1(url + client.privateKey).toString();
+      const signature = await SHA1(url + client.privateKey);
 
       apiRequest.make();
 
@@ -82,7 +82,7 @@ describe('APIRequest', () => {
         format: Formats.Dump,
       });
       const url = `${endpoint}&game_id=${client.gameId}&format=dump`;
-      const signature = SHA1(url + client.privateKey).toString();
+      const signature = await SHA1(url + client.privateKey);
 
       apiRequest.make();
 
