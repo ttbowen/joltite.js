@@ -1,16 +1,11 @@
 // import { SHA1 } from 'crypto-js';
 
-import SHA1 from './util/SHA1';
+import SHA1 from './util/SHA1.js';
 
-import { RequestOptions } from './types/RequestOptions';
-import { GameJolt } from './GameJolt';
-import { HttpMethods } from './types/HttpMethods';
-import { Formats } from './types/Formats';
-
-const fetch =
-  typeof module !== 'undefined' && module.exports
-    ? require('node-fetch')
-    : window.fetch;
+import { RequestOptions } from './types/RequestOptions.js';
+import { GameJolt } from './GameJolt.js';
+import { HttpMethods } from './types/HttpMethods.js';
+import { Formats } from './types/Formats.js';
 
 /**
  * Represents an API request.
@@ -52,6 +47,11 @@ export class APIRequest {
     }
 
     const signature = await this.signature(url);
+
+    const fetch =
+      typeof window !== 'undefined' && window.fetch
+        ? window.fetch
+        : (await import('node-fetch')).default;
 
     return await fetch(`${url}&signature=${signature}`, {
       method: this.method,

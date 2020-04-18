@@ -1,8 +1,8 @@
-import { ClientOptions } from './types/ClientOptions';
-import { UserManager } from './managers/UserManager';
-import { Response } from './types/responses/Response';
-import { SessionManager } from './managers/SessionManager';
-import { AuthCredentials } from './types/AuthCredentials';
+import { ClientOptions } from './types/ClientOptions.js';
+import { UserManager } from './managers/UserManager.js';
+import { Response } from './types/responses/Response.js';
+import { SessionManager } from './managers/SessionManager.js';
+import { AuthCredentials } from './types/AuthCredentials.js';
 
 export class GameJolt {
   /**

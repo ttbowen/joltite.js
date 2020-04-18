@@ -1,4 +1,4 @@
-import { AuthCredentials } from './AuthCredentials';
+import { AuthCredentials } from './AuthCredentials.js';
 /**
  * Represents options that can be passed to the Game Jolt client.
  */

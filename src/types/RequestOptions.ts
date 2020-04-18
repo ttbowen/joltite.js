@@ -1,5 +1,5 @@
-import { Formats } from './Formats';
-import { HttpMethods } from './HttpMethods';
+import { Formats } from './Formats.js';
+import { HttpMethods } from './HttpMethods.js';
 
 /**
  * API request options.
