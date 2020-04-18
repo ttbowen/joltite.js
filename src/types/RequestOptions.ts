@@ -1,6 +1,6 @@
 import { Formats } from './Formats';
 import { HttpMethods } from './HttpMethods';
-import { BodyInit } from './BodyInit';
+import { BodyInit } from 'node-fetch';
 
 /**
  * API request options.

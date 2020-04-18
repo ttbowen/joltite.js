@@ -2,7 +2,7 @@ import { RequestOptions } from './types/RequestOptions';
 import { GameJolt } from './GameJolt';
 import { HttpMethods } from './types/HttpMethods';
 import { Formats } from './types/Formats';
-import { BodyInit } from './types/BodyInit';
+import { BodyInit } from 'node-fetch';
 
 import SHA1 from './util/SHA1';
 
