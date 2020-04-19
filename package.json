@@ -11,7 +11,7 @@
   "scripts": {
     "prepublish": "tsc --module commonjs",
     "watch:web": "multiscript tsc --watch + rollup -c --watch --silent",
-    "watch:node": "multiscript tsc --watch --module commonjs",
+    "watch:node": "tsc --watch --module commonjs",
     "dist": "tsc && rollup -c && node uglify",
     "test": "jest --coverage"
   },
