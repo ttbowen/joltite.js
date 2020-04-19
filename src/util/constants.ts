@@ -29,3 +29,5 @@ export const Endpoints = {
   users,
   sessions,
 };
+
+export const isBrowser = typeof window !== 'undefined';

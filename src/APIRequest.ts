@@ -1,10 +1,13 @@
+import { Response } from 'node-fetch';
+
 import { RequestOptions } from './types/RequestOptions';
 import { GameJolt } from './GameJolt';
 import { HttpMethods } from './types/HttpMethods';
 import { Formats } from './types/Formats';
-import { BodyInit } from 'node-fetch';
+import { SHA1 } from './util/SHA1';
+import { isBrowser } from './util/constants';
 
-import SHA1 from './util/SHA1';
+const fetch = isBrowser ? window.fetch : require('node-fetch');
 
 /**
  * Represents an API request.
@@ -13,7 +16,7 @@ export class APIRequest {
   method: HttpMethods;
   path: string;
   client: GameJolt;
-  body?: BodyInit;
+  body?: any;
   format: Formats;
 
   /**
@@ -32,7 +35,7 @@ export class APIRequest {
   /**
    * Sends a request to the API.
    */
-  async make(): Promise<Response> {
+  async make(): Promise<Response | globalThis.Response> {
     let url = `${this.path}&game_id=${this.client.gameId}`;
 
     if (this.format !== Formats.Json) {
@@ -41,15 +44,10 @@ export class APIRequest {
 
     const signature = await this.signature(url);
 
-    const fetch =
-      typeof window !== 'undefined' && typeof window.fetch !== 'undefined'
-        ? window.fetch
-        : (await import('node-fetch')).default;
-
-    return (await fetch(`${url}&signature=${signature}`, {
+    return fetch(`${url}&signature=${signature}`, {
       method: this.method,
-      body: this.body as string,
-    })) as Response;
+      body: this.body,
+    });
   }
 
   private signature(url: string): Promise<string> {
