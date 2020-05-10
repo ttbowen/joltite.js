@@ -1,12 +1,16 @@
+/**
+ * @jest-environment node
+ */
+jest.mock('node-fetch', () => jest.fn());
+jest.useFakeTimers();
+
 import fetch from 'node-fetch';
-import SHA1 from '../src/util/SHA1';
+import { SHA1 } from '../src/util/SHA1';
 
 import { GameJolt } from '../src/GameJolt';
 import { APIRequest } from '../src/APIRequest';
 import { Endpoints } from '../src/util/constants';
 import { Formats } from '../src/types/Formats';
-
-jest.mock('node-fetch', () => jest.fn());
 
 const { Response } = jest.requireActual('node-fetch');
 
@@ -37,7 +41,7 @@ describe('APIRequest', () => {
       const endpoint = Endpoints.users.fetch([userId]);
       const apiRequest = new APIRequest(client, endpoint);
 
-      apiRequest.make();
+      await apiRequest.make();
 
       expect(fetch).toHaveBeenCalled();
     });
@@ -58,7 +62,7 @@ describe('APIRequest', () => {
       const url = `${endpoint}&game_id=${client.gameId}`;
       const signature = await SHA1(url + client.privateKey);
 
-      apiRequest.make();
+      await apiRequest.make();
 
       expect(fetch).toHaveBeenCalledWith(`${url}&signature=${signature}`, {
         method: apiRequest.method,
@@ -84,7 +88,7 @@ describe('APIRequest', () => {
       const url = `${endpoint}&game_id=${client.gameId}&format=dump`;
       const signature = await SHA1(url + client.privateKey);
 
-      apiRequest.make();
+      await apiRequest.make();
 
       expect(fetch).toHaveBeenCalledWith(`${url}&signature=${signature}`, {
         method: apiRequest.method,
