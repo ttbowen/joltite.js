@@ -1,9 +1,13 @@
+/**
+ * @jest-environment node
+ */
+jest.mock('node-fetch', () => jest.fn());
+jest.useFakeTimers();
+
 import fetch from 'node-fetch';
 
 import { GameJolt } from '../../src/GameJolt';
 import { AuthCredentials } from '../../src/types/AuthCredentials';
-
-jest.mock('node-fetch', () => jest.fn());
 
 const { Response } = jest.requireActual('node-fetch');
 
@@ -20,7 +24,6 @@ describe('UserManager', () => {
     client = new GameJolt({
       privateKey,
       gameId,
-      authCredentials,
     });
   });
 

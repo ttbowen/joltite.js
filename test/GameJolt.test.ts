@@ -1,9 +1,13 @@
+/**
+ * @jest-environment node
+ */
+jest.mock('node-fetch', () => jest.fn());
+jest.useFakeTimers();
+
 import fetch from 'node-fetch';
 
 import { GameJolt } from '../src/GameJolt';
 import { AuthCredentials } from '../dist/types/AuthCredentials';
-
-jest.mock('node-fetch', () => jest.fn());
 
 const { Response } = jest.requireActual('node-fetch');
 
@@ -16,20 +20,30 @@ describe('GameJolt', () => {
   };
 
   describe('login', () => {
-    it('should send back the api result', async () => {
+    it('should send back the auth api result', async () => {
       const client = new GameJolt({
         privateKey,
         gameId,
       });
-      (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-        new Response(
-          JSON.stringify({
-            response: {
-              success: 'true',
-            },
-          })
+      (fetch as jest.MockedFunction<typeof fetch>)
+        .mockResolvedValueOnce(
+          new Response(
+            JSON.stringify({
+              response: {
+                success: 'true',
+              },
+            })
+          )
         )
-      );
+        .mockResolvedValueOnce(
+          new Response(
+            JSON.stringify({
+              response: {
+                success: 'false',
+              },
+            })
+          )
+        );
 
       const result = await client.login(authCredentials);
 
@@ -41,16 +55,26 @@ describe('GameJolt', () => {
         privateKey,
         gameId,
       });
-      const authSpy = jest.spyOn(client.users, 'auth');
-      (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-        new Response(
-          JSON.stringify({
-            response: {
-              success: 'true',
-            },
-          })
+      (fetch as jest.MockedFunction<typeof fetch>)
+        .mockResolvedValueOnce(
+          new Response(
+            JSON.stringify({
+              response: {
+                success: 'true',
+              },
+            })
+          )
         )
-      );
+        .mockResolvedValueOnce(
+          new Response(
+            JSON.stringify({
+              response: {
+                success: 'false',
+              },
+            })
+          )
+        );
+      const authSpy = jest.spyOn(client.users, 'auth');
 
       await client.login(authCredentials);
 
@@ -62,16 +86,26 @@ describe('GameJolt', () => {
         privateKey,
         gameId,
       });
-      const openSpy = jest.spyOn(client.sessions, 'open');
-      (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-        new Response(
-          JSON.stringify({
-            response: {
-              success: 'true',
-            },
-          })
+      (fetch as jest.MockedFunction<typeof fetch>)
+        .mockResolvedValueOnce(
+          new Response(
+            JSON.stringify({
+              response: {
+                success: 'true',
+              },
+            })
+          )
         )
-      );
+        .mockResolvedValueOnce(
+          new Response(
+            JSON.stringify({
+              response: {
+                success: 'false',
+              },
+            })
+          )
+        );
+      const openSpy = jest.spyOn(client.sessions, 'open');
 
       await client.login(authCredentials);
 

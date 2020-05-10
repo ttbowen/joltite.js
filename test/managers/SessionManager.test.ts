@@ -1,26 +1,24 @@
+/**
+ * @jest-environment node
+ */
+jest.mock('node-fetch', () => jest.fn());
+jest.useFakeTimers();
+
 import fetch from 'node-fetch';
 
 import { GameJolt } from '../../src/GameJolt';
-import { AuthCredentials } from '../../src/types/AuthCredentials';
-
-jest.mock('node-fetch', () => jest.fn());
 
 const { Response } = jest.requireActual('node-fetch');
 
 describe('SessionManager', () => {
   const privateKey = 'cb2g1907fb6c96a95fc8950f8b6cbke6';
   const gameId = 1234;
-  const authCredentials: AuthCredentials = {
-    username: 'user',
-    token: 'abc123',
-  };
   let client: GameJolt;
 
   beforeEach(() => {
     client = new GameJolt({
       privateKey,
       gameId,
-      authCredentials,
     });
   });
 

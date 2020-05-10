@@ -9,11 +9,16 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepublish": "tsc && yarn run webpack:prod",
-    "webpack:dev": "webpack --config webpack.dev.js",
-    "webpack:prod": "webpack --config webpack.prod.js",
+    "prepublish": "tsc --module commonjs",
+    "watch:web": "multiscript tsc --watch + rollup -c --watch --silent",
+    "watch:node": "tsc --watch --module commonjs",
+    "dist": "tsc && rollup -c && node uglify",
     "test": "jest --coverage"
   },
+  "files": [
+    "dist",
+    "rollup"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "jest": {
@@ -34,10 +39,9 @@
     ]
   },
   "devDependencies": {
-    "@types/crypto-js": "^3.1.44",
     "@types/jest": "^25.1.3",
-    "@types/node": "^13.7.7",
-    "@types/node-fetch": "^2.5.5",
+    "@types/node": "^13.13.0",
+    "@types/node-fetch": "^2.5.6",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -47,16 +51,17 @@
     "jest": "^25.1.0",
     "jest-config": "^25.1.0",
     "lint-staged": "^10.0.8",
+    "multiscript": "^0.1.8",
     "prettier": "2.0.4",
+    "rollup": "^2.6.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-merge": "^4.2.2"
+    "uglify-es": "^3.3.9"
   },
   "dependencies": {
-    "crypto-js": "^4.0.0",
     "node-fetch": "^2.6.0"
   }
 }
