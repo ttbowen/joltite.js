@@ -15,6 +15,10 @@
     "dist": "tsc && rollup -c && node uglify",
     "test": "jest --coverage"
   },
+  "files": [
+    "dist",
+    "rollup"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "jest": {
