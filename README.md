@@ -38,14 +38,20 @@ const { GameJolt } = require('joltite.js');
 
 ```js
 const gamejolt = new GameJolt({
-  gameId: 1234,
-  privateKey: 'super_secret_key'
+  gameId: 486477,
+  privateKey: 'super_secret_key',
 });
 
-await gamejolt.login({
+const response = await gamejolt.login({
   username: 'ttbowen',
-  token: 'abc123'
+  token: 'abc123',
 });
+
+if (response.success) {
+  console.log(
+    `Successfully logged in as ${gamejolt.authCredentials.username}!`
+  );
+}
 ```
 
 ## License
