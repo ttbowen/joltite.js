@@ -24,7 +24,7 @@ Browsers
 Node
 </th><td>
 
-Install with <code>yarn add joltite.js</code> or <code>npm install joltite.js
+Install with <code>yarn add joltite.js</code> or <code>npm install joltite.js</code>
 
 ```js
 const { GameJolt } = require('joltite.js');
