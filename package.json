@@ -17,8 +17,7 @@
     "test": "jest --coverage"
   },
   "files": [
-    "dist",
-    "rollup"
+    "dist"
   ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
