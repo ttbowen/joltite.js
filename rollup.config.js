@@ -1,12 +1,12 @@
-const { version } = require('./package.json');
+import typescript from '@rollup/plugin-typescript';
 
 export default {
-  input: './dist/index.js',
+  input: './src/index.ts',
   output: {
-    file: `./rollup/joltite-${version}.js`,
+    file: `./dist/joltite.js`,
     name: 'joltite',
     format: 'iife',
     preferConst: true,
   },
-  onwarn() {},
+  plugins: [typescript({ rootDir: 'src' })],
 };

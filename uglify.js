@@ -1,15 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const UglifyJS = require('uglify-es');
+const rollupPath = path.resolve('dist');
 
-const { version } = require('./package.json');
-
-const rollupPath = path.resolve('rollup');
-
-const input = fs.readFileSync(
-  path.join(rollupPath, `joltite-${version}.js`),
-  'utf8'
-);
+const input = fs.readFileSync(path.join(rollupPath, `joltite.js`), 'utf8');
 
 const { code: output } = UglifyJS.minify(input, {
   compress: {
@@ -20,8 +14,4 @@ const { code: output } = UglifyJS.minify(input, {
   },
 });
 
-fs.writeFileSync(
-  path.join(rollupPath, `joltite-${version}.min.js`),
-  output,
-  'utf8'
-);
+fs.writeFileSync(path.join(rollupPath, `joltite.min.js`), output, 'utf8');
