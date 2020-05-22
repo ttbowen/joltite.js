@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build:": "tsc --module commonjs --declaration true --outDir dist",
+    "build": "tsc --module commonjs --declaration true --outDir dist",
     "prepublish": "yarn run build && yarn run rollup",
     "watch:web": "multiscript tsc --watch + rollup -c --watch --silent",
     "watch:node": "tsc --watch --module commonjs",
