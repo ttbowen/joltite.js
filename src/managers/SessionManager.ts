@@ -19,7 +19,7 @@ export class SessionManager extends BaseManager {
 
   /**
    * Opens a game session for a particular user and allows you to tell Game Jolt
-   * that a user is playing your game.s
+   * that a user is playing your game.
    */
   async open(): Promise<Response> {
     const { username, token } = this.client.authCredentials;
