@@ -3,6 +3,7 @@ import { UserManager } from './managers/UserManager';
 import { Response } from './types/responses/Response';
 import { SessionManager } from './managers/SessionManager';
 import { AuthCredentials } from './types/AuthCredentials';
+import { ScoreManager } from './managers/ScoreManager';
 
 export class GameJolt {
   /**
@@ -31,6 +32,11 @@ export class GameJolt {
   readonly sessions: SessionManager;
 
   /**
+   * Manager for score endpoints.
+   */
+  readonly scores: ScoreManager;
+
+  /**
    * @param options The options to pass to the client.
    */
   constructor(options: ClientOptions) {
@@ -42,6 +48,7 @@ export class GameJolt {
     };
     this.users = new UserManager(this);
     this.sessions = new SessionManager(this);
+    this.scores = new ScoreManager(this);
 
     if (options.authCredentials) {
       this.sessions.open();

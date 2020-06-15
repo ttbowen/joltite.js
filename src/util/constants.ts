@@ -23,11 +23,23 @@ const sessions = {
 };
 
 /**
+ * Contains all score endpoints
+ */
+const scores = {
+  add: (score: string, sort: number): string =>
+    `${apiBase}/scores/add?score=${score}&sort=${sort}`,
+  fetch: (): string => `${apiBase}/scores?`,
+  tables: (): string => `${apiBase}/scores/tables?`,
+  rank: (sort: number): string => `${apiBase}/scores/get-rank?sort=${sort}`,
+};
+
+/**
  * Contains all api endpoints.
  */
 export const Endpoints = {
   users,
   sessions,
+  scores,
 };
 
 export const isBrowser = typeof window !== 'undefined';
