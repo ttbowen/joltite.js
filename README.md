@@ -15,7 +15,7 @@ Browsers
 </th><td width=100%>
         
 ```html
-<script src="https://unpkg.com/joltite.js@0.1.0/dist/joltite.min.js"></script>
+<script src="https://unpkg.com/joltite.js@0.2.0/dist/joltite.min.js"></script>
 ```
 
 </td></tr>
