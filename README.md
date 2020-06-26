@@ -2,7 +2,6 @@
 
 [![@latest](https://img.shields.io/npm/v/joltite.js.svg)](https://www.npmjs.com/package/joltite.js)
 ![tests](https://github.com/ttbowen/joltite.js/workflows/tests/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/ttbowen/joltite.js/badge.svg?branch=master)](https://coveralls.io/github/ttbowen/joltite.js?branch=master)
 
 
 joltite.js is a library that allows you to easily interact with the [Game Jolt API](https://gamejolt.com/game-api).
