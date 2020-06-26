@@ -2,6 +2,7 @@ import { APIRequest } from '../APIRequest';
 import { GameJolt } from '../GameJolt';
 import { RequestOptions } from '../types/RequestOptions';
 import { Formats } from '../types/Formats';
+import { apiBase } from '../util/constants';
 
 /**
  * Base manager responsible for managing
@@ -26,7 +27,8 @@ export abstract class BaseManager {
     url: string,
     request: RequestOptions = {}
   ): Promise<any> {
-    const apiRequest = new APIRequest(this.client, url, request);
+    const endpoint = apiBase + encodeURI(url);
+    const apiRequest = new APIRequest(this.client, endpoint, request);
     const apiResponse = await apiRequest.make();
 
     let response: Promise<any>;
