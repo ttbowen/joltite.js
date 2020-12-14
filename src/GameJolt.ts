@@ -5,6 +5,7 @@ import { SessionManager } from './managers/SessionManager';
 import { AuthCredentials } from './types/AuthCredentials';
 import { ScoreManager } from './managers/ScoreManager';
 import { TrophyManager } from './managers/TrophyManager';
+import { DataStoreManager } from './managers/DataStoreManager';
 
 export class GameJolt {
   /**
@@ -43,6 +44,11 @@ export class GameJolt {
   readonly trophies: TrophyManager;
 
   /**
+   * Manager for data storage endpoints.
+   */
+  readonly dataStorage: DataStoreManager;
+
+  /**
    * @param options The options to pass to the client.
    */
   constructor(options: ClientOptions) {
@@ -56,6 +62,7 @@ export class GameJolt {
     this.sessions = new SessionManager(this);
     this.scores = new ScoreManager(this);
     this.trophies = new TrophyManager(this);
+    this.dataStorage = new DataStoreManager(this);
 
     if (options.authCredentials) {
       this.sessions.open();

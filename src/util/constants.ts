@@ -1,3 +1,5 @@
+import { DataStoreOperations } from '../types/DataStoreOperations';
+
 export const apiBase = 'https://api.gamejolt.com/api/game/v1_2';
 
 /**
@@ -45,6 +47,23 @@ const trophies = {
 };
 
 /**
+ * Contains all data storage endpoints.
+ */
+const dataStorage = {
+  fetch: (key: string): string => `/data-store/?&key=${key}`,
+  set: (key: string, data: string | number): string =>
+    `/data-store/set?&key=${key}&data=${data}`,
+  update: (
+    key: string,
+    operation: DataStoreOperations,
+    value: string | number
+  ): string =>
+    `/data-store/update?&key=${key}&operation=${operation}&value=${value}`,
+  remove: (key: string): string => `/data-store/remove?&key=${key}`,
+  getKeys: (): string => `/data-store/get-keys?`,
+};
+
+/**
  * Contains all api endpoints.
  */
 export const Endpoints = {
@@ -52,6 +71,7 @@ export const Endpoints = {
   sessions,
   scores,
   trophies,
+  dataStorage,
 };
 
 export const isBrowser = typeof window !== 'undefined';
