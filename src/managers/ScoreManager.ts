@@ -93,7 +93,7 @@ export class ScoreManager extends BaseManager {
     return response;
   }
 
-  private guestOrUser(guest?: string) {
+  private guestOrUser(guest?: string): string {
     const { username, token } = this.client.authCredentials;
 
     return guest
