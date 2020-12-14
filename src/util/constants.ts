@@ -10,7 +10,7 @@ const users = {
 };
 
 /**
- * Contains all session endpoints
+ * Contains all session endpoints.
  */
 const sessions = {
   open: (username: string, token: string): string =>
@@ -22,7 +22,7 @@ const sessions = {
 };
 
 /**
- * Contains all score endpoints
+ * Contains all score endpoints.
  */
 const scores = {
   add: (score: string, sort: number): string =>
