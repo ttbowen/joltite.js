@@ -50,17 +50,25 @@ const trophies = {
  * Contains all data storage endpoints.
  */
 const dataStorage = {
-  fetch: (key: string): string => `/data-store/?&key=${key}`,
+  fetch: (key: string): string => `/data-store/?key=${key}`,
   set: (key: string, data: string | number): string =>
-    `/data-store/set?&key=${key}&data=${data}`,
+    `/data-store/set?key=${key}&data=${data}`,
   update: (
     key: string,
     operation: DataStoreOperations,
     value: string | number
   ): string =>
-    `/data-store/update?&key=${key}&operation=${operation}&value=${value}`,
-  remove: (key: string): string => `/data-store/remove?&key=${key}`,
+    `/data-store/update?key=${key}&operation=${operation}&value=${value}`,
+  remove: (key: string): string => `/data-store/remove?key=${key}`,
   getKeys: (): string => `/data-store/get-keys?`,
+};
+
+/**
+ * Contains all friends endpoints.
+ */
+const friends = {
+  fetch: (username: string, token: string): string =>
+    `/friends/?username=${username}&user_token=${token}`,
 };
 
 /**
@@ -72,6 +80,7 @@ export const Endpoints = {
   scores,
   trophies,
   dataStorage,
+  friends,
 };
 
 export const isBrowser = typeof window !== 'undefined';
