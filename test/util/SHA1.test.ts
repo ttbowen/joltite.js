@@ -11,15 +11,15 @@ describe('SHA1', () => {
   it.each([
     [
       Endpoints.sessions.ping(username, token, 'active'),
-      '17c4058c6dd1f11d3b8b904c14cc66c766173b67',
+      'b4cca2d99afb3fc3f0442ce23a3692811ffbb4e9',
     ],
     [
       Endpoints.sessions.open(username, token),
-      'f0274888d36a33e6b20958dab6b0e2a233cc483b',
+      '4e14f27b7365192eb730229e7aed900e5f435e06',
     ],
     [
       Endpoints.users.fetch([15071]),
-      'cfba6dd817ca442e4436a8afaa1ba012b869f021',
+      'ee5588aa9d4b5553bf42f7d30ccf08f618cdbc55',
     ],
   ])(
     'should return a sha-1 hash',
