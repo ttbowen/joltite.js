@@ -10,7 +10,7 @@ const users = {
 };
 
 /**
- * Contains all session endpoints
+ * Contains all session endpoints.
  */
 const sessions = {
   open: (username: string, token: string): string =>
@@ -22,7 +22,7 @@ const sessions = {
 };
 
 /**
- * Contains all score endpoints
+ * Contains all score endpoints.
  */
 const scores = {
   add: (score: string, sort: number): string =>
@@ -33,12 +33,25 @@ const scores = {
 };
 
 /**
+ * Contains all trophy endpoints.
+ */
+const trophies = {
+  add: (username: string, token: string, trophyId: number): string =>
+    `/trophies/add-achieved?username=${username}&user_token=${token}&trophy_id=${trophyId}`,
+  remove: (username: string, token: string, trophyId: number): string =>
+    `/trophies/remove-achieved?username=${username}&user_token=${token}&trophy_id=${trophyId}`,
+  fetch: (username: string, token: string): string =>
+    `/trophies/?username=${username}&user_token=${token}`,
+};
+
+/**
  * Contains all api endpoints.
  */
 export const Endpoints = {
   users,
   sessions,
   scores,
+  trophies,
 };
 
 export const isBrowser = typeof window !== 'undefined';
