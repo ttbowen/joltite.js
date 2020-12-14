@@ -8,6 +8,7 @@ import fetch from 'node-fetch';
 
 import { GameJolt } from '../../src/GameJolt';
 import { Endpoints } from '../../src/util/constants';
+import { ScoreQuery } from '../../src/types/ScoreQuery';
 
 const { Response } = jest.requireActual('node-fetch');
 
@@ -37,8 +38,15 @@ describe('ScoreManager', () => {
   describe('fetch', () => {
     it('should call the correct endpoint', async () => {
       Endpoints.scores.fetch = jest.fn();
+      const query: ScoreQuery = {
+        userOnly: true,
+        betterThan: 5,
+        worseThan: 10,
+        tableId: 12345,
+        limit: 10,
+      };
 
-      await client.scores.fetch();
+      await client.scores.fetch(query);
 
       expect(Endpoints.scores.fetch).toHaveBeenCalledTimes(1);
     });
