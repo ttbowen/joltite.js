@@ -33,12 +33,25 @@ const scores = {
 };
 
 /**
+ * Contains all trophy endpoints.
+ */
+const trophies = {
+  add: (username: string, token: string, trophyId: number): string =>
+    `/trophies/add-achieved?username=${username}&user_token=${token}&trophy_id=${trophyId}`,
+  remove: (username: string, token: string, trophyId: number): string =>
+    `/trophies/remove-achieved?username=${username}&user_token=${token}&trophy_id=${trophyId}`,
+  fetch: (username: string, token: string): string =>
+    `/trophies/?username=${username}&user_token=${token}`,
+};
+
+/**
  * Contains all api endpoints.
  */
 export const Endpoints = {
   users,
   sessions,
   scores,
+  trophies,
 };
 
 export const isBrowser = typeof window !== 'undefined';
