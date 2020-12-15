@@ -14,7 +14,8 @@
     "watch:web": "multiscript tsc --watch + rollup -c --watch --silent",
     "watch:node": "tsc --watch --module commonjs",
     "rollup": "rollup -c && node uglify",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "docs:build": "typedoc --out docs src --tsconfig tsconfig.json --module commonjs"
   },
   "files": [
     "dist"
@@ -57,6 +58,7 @@
     "rollup": "^2.6.1",
     "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.2",
+    "typedoc": "^0.19.2",
     "typescript": "^3.8.3",
     "uglify-es": "^3.3.9"
   },
