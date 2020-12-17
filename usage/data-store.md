@@ -59,8 +59,13 @@ Below is an example of pattern matching:
 
 ```js
 const user = false; // Fetch global keys.
+const pattern = 'save*'; // The pattern of the keys to search for.
 
-const response = await api.dataStorage.getKeys(user, 'save|*');
+const response = await api.dataStorage.getKeys(user, pattern);
+
+if (response.success) {
+  console.log(response.keys); // Example output: [ { key: 'save' }, { key: 'savers' } ]
+}
 ```
 
 ## Set
