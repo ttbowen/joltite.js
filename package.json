@@ -1,6 +1,6 @@
 {
   "name": "joltite.js",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "A JavaScript library for interfacing with the Game Jolt game API.",
   "author": "Thomas Bowen",
   "repository": {

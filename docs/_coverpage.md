@@ -1,6 +1,6 @@
 <!-- _coverpage.md -->
 
-# joltite.js <small>0.3.0</small>
+# joltite.js <small>1.0.0</small>
 
 > A JavaScript library for interfacing with the Game Jolt game API.
 
