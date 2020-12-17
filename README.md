@@ -17,7 +17,7 @@ $ yarn add joltite.js
 Using unpkg CDN:
 
 ```html
-<script src="https://unpkg.com/joltite.js@0.3.0/dist/joltite.min.js"></script>
+<script src="https://unpkg.com/joltite.js@1.0.0/dist/joltite.min.js"></script>
 ```
 
 ## Basic Usage
