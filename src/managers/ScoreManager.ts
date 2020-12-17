@@ -73,11 +73,16 @@ export class ScoreManager extends BaseManager {
    * Returns the rank of a particular score on a score table.
    *
    * @param sort This is a numerical sorting value that is represented by a rank on the score table.
+   * @param tableId The ID of the score table from which you want to get the rank.
    */
-  async getRank(sort: number): Promise<RankResponse> {
-    const response = (await this.request(
-      Endpoints.scores.rank(sort)
-    )) as RankResponse;
+  async getRank(sort: number, tableId?: number): Promise<RankResponse> {
+    let endpoint = Endpoints.scores.rank(sort);
+
+    if (tableId) {
+      endpoint += `&table_id=${tableId}`;
+    }
+
+    const response = (await this.request(endpoint)) as RankResponse;
 
     return response;
   }

@@ -92,7 +92,10 @@ if (response.success) {
 To get the rank of a particular score on a score table:
 
 ```js
-const response = await api.scores.getRank();
+const sort = 1234; // Numerical sorting value that is represented by a rank on the table.
+const tableId = 2345; // The ID of the table.
+
+const response = await gamejolt.scores.getRank(sort, tableId);
 
 if (response.success) {
   console.log(response.rank); // The rank of the score e.g. 5
