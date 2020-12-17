@@ -1,4 +1,6 @@
 * [Getting Started](/)
+* API
+  * [Documentation](https://ttbowen.github.io/joltite.js/api/)
 * Usage
 	* [Users](usage/users.md)
 	* [Scores](usage/scores.md)

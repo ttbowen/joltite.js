@@ -12,6 +12,7 @@ This library supports version `1.2` of the Game Jolt API and implements user aut
 
 - [Installing](#installing)
 - [Usage](#usage)
+- [Documentation](#documentation)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -63,6 +64,11 @@ if (response.success) {
   // Successfully logged in.
 }
 ```
+
+## Documentation
+
+The documentation for this library can be found [here](https://ttbowen.github.io/joltite.js/#/)
+
 ## Contributing
 
 Feel free to dive in! [Open an issue](https://github.com/ttbowen/joltite.js/issues/new) or submit PRs.
