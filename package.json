@@ -15,7 +15,7 @@
     "watch:node": "tsc --watch --module commonjs",
     "rollup": "rollup -c && node uglify",
     "test": "jest --coverage",
-    "docs:build": "typedoc --mode modules --out docs src --module commonjs"
+    "typedoc": "typedoc src/index.ts"
   },
   "files": [
     "dist"
