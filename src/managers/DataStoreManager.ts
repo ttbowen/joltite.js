@@ -14,7 +14,6 @@ export class DataStoreManager extends BaseManager {
    *
    * @param key The key of the data item you'd like to fetch.
    * @param [user] Whether to fetch user data store item.
-   *
    */
   async fetch(key: string, user?: boolean): Promise<DataStoreItemResponse> {
     const { username, token } = this.client.authCredentials;
@@ -35,7 +34,6 @@ export class DataStoreManager extends BaseManager {
    * @param key The key of the data item you'd like to set.
    * @param data The data you'd like to set.
    * @param [user] Whether to set a user data store item.
-   *
    */
   async set(
     key: string,
@@ -103,7 +101,6 @@ export class DataStoreManager extends BaseManager {
    *
    * @param [user] Whether to fetch user data store item.
    * @param [pattern] The pattern to apply to the key names in the data store.
-   *
    */
   async getKeys(
     user?: boolean,
