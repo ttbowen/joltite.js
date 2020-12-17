@@ -73,7 +73,7 @@ The documentation for this library can be found [here](https://ttbowen.github.io
 
 Feel free to dive in! [Open an issue](https://github.com/ttbowen/joltite.js/issues/new) or submit PRs.
 
-joltite.js follows the [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) Code of Conduct.
+This project follows the [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) Code of Conduct.
 
 ## License
 
