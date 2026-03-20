@@ -72,5 +72,59 @@ describe('UserManager', () => {
         users: [{ id: 15071 }],
       });
     });
+
+    it('should return the correct api response when fetching by user ids', async () => {
+      const userIds = [15071, 20000];
+      (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            response: {
+              success: 'true',
+              users: [
+                {
+                  id: 15071,
+                },
+                {
+                  id: 20000,
+                },
+              ],
+            },
+          })
+        )
+      );
+
+      const result = await client.users.fetch(userIds);
+
+      expect(result).toEqual({
+        success: true,
+        users: [{ id: 15071 }, { id: 20000 }],
+      });
+    });
+
+    it('should return the correct api response when fetching by username', async () => {
+      const username = 'testuser';
+      (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            response: {
+              success: 'true',
+              users: [
+                {
+                  id: 15071,
+                  username: 'testuser',
+                },
+              ],
+            },
+          })
+        )
+      );
+
+      const result = await client.users.fetch(username);
+
+      expect(result).toEqual({
+        success: true,
+        users: [{ id: 15071, username: 'testuser' }],
+      });
+    });
   });
 });

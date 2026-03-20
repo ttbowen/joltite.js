@@ -27,14 +27,15 @@ export class UserManager extends BaseManager {
   /**
    * Returns a user's data.
    *
-   * @param users The ids of the users to fetch.
+   * @param users The ids of the users to fetch, or a username string.
    */
-  async fetch(users: number | number[]): Promise<UserResponse> {
-    const ids = typeof users === 'number' ? [users] : users;
+  async fetch(users: string | number | number[]): Promise<UserResponse> {
+    const endpoint =
+      typeof users === 'string'
+        ? Endpoints.users.fetchByUsername(users)
+        : Endpoints.users.fetch(typeof users === 'number' ? [users] : users);
 
-    const response = (await this.request(
-      Endpoints.users.fetch(ids)
-    )) as UserResponse;
+    const response = (await this.request(endpoint)) as UserResponse;
 
     return response;
   }

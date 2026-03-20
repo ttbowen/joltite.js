@@ -9,6 +9,7 @@ const users = {
   auth: (username: string, token: string): string =>
     `/users/auth/?username=${username}&user_token=${token}`,
   fetch: (userIds: number[]): string => `/users/?user_id=${userIds.join()}`,
+  fetchByUsername: (username: string): string => `/users/?username=${username}`,
 };
 
 /**
