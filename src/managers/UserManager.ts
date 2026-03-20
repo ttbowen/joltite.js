@@ -25,15 +25,22 @@ export class UserManager extends BaseManager {
   }
 
   /**
-   * Returns a user's data.
-   *
-   * @param users The ids of the users to fetch, or a username string.
+   * Fetches a user by their ID or username.
+   * You can also fetch multiple users by providing an array of IDs.
+   * @param userIdsOrUsername The ID(s) or username of the user(s) to fetch.
+   * @returns A promise that resolves to the user response.
    */
-  async fetch(users: string | number | number[]): Promise<UserResponse> {
+  async fetch(
+    userIdsOrUsername: string | number | number[]
+  ): Promise<UserResponse> {
     const endpoint =
-      typeof users === 'string'
-        ? Endpoints.users.fetchByUsername(users)
-        : Endpoints.users.fetch(typeof users === 'number' ? [users] : users);
+      typeof userIdsOrUsername === 'string'
+        ? Endpoints.users.fetchByUsername(userIdsOrUsername)
+        : Endpoints.users.fetch(
+            typeof userIdsOrUsername === 'number'
+              ? [userIdsOrUsername]
+              : userIdsOrUsername
+          );
 
     const response = (await this.request(endpoint)) as UserResponse;
 
